@@ -8,6 +8,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 50px;
+}
+
+.top-games {
+  margin: 0 0 0 30px;
 }
 
 .refresh-button {
