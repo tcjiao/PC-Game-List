@@ -1,7 +1,13 @@
 <%- include('./partials/header') %>
 
 
-<h3>Top Games</h3>
+<div class="header">
+  <h3>Top Games</h3>
+  <form action="/" method="get">
+    <button type="submit" class="refresh-button">🔄</button>
+  </form>
+</div>
+
 <div class="game-list">
   <% topGames.forEach((game, index) => { %>
     <div class="game">
@@ -14,5 +20,7 @@
     <% } %>
   <% }) %>
 </div>
+
+
 
 <%- include('./partials/footer') %>
