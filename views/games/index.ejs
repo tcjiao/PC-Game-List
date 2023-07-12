@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+
+
+<div class="header">
+  <h1 class="top-games">Top Games</h1>
+  <form action="/games" method="get">
+    <button type="submit" class="refresh-button">🔄</button>
+  </form>
+</div>
+
+<div class="game-list">
+  <% topGames.forEach((game, index) => { %>
+    <div class="game">
+      <a href="/game/<%= game.id %>"></a>
+      <h3><%= game.name %></h3>
+      <img src="<%= game.coverImageUrl %>" alt="<%= game.name %>" class="game-image">
+      </a>
+      <p>Rating: <%= game.rating %></p>
+    </div>
+    <% if ((index + 1) % 5 === 0) { %>
+      <div class="clear"></div>
+    <% } %>
+  <% }) %>
+</div>
+
+
+<%- include('../partials/footer') %>
