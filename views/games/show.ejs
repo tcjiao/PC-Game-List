@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+
+<div class="header">
+<h1 class="page-title">Game Details</h1>
+</div>
+
+<div class="details-container">
+    <div class="game-details">
+      <h1><%= game.name %></h1>
+      <img src="<%= game.background_image %>" alt="<%= game.name %>" class="game-image-details">
+    </div>
+    <h3>Game Description: </h3>
+    <p class="game-description"><%- game.description %></p>
+  </div>
+
+
+<%- include('../partials/footer') %>

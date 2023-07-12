@@ -9,13 +9,14 @@
 </head>
 <body>
   <nav>
-    <a href="/" <%- title === 'Home Page' ? 'class="active"' : '' %>>HOME</a>
+    <a href="/" class="home-link" <%= title === 'Home Page' ? 'active' : '' %>">HOME</a>
     <% if (user) { %>
-      <a href=""	<%- title === 'NEWS' ? 'class="active"' : '' %>>NEWS</a>
-      <a href="" <%- title === 'MY LIST' ? 'class="active"' : '' %>>MY LIST</a>
-      <a href="/logout">LOG OUT</a>
-      <% } else { %>
+        <a href="" <%= title === 'NEWS' ? 'class="active"' : '' %>>NEWS</a>
+        <a href="" <%= title === 'MY LIST' ? 'class="active"' : '' %>>MY LIST</a>
+        <a href="/logout">LOG OUT</a>
+    <% } else { %>
       <a href="/auth/google" class="login"><img src="https://i.imgur.com/FHjYyi0.png"></a>
-      <% } %>
+    <% } %>
   </nav>
+
   <main>

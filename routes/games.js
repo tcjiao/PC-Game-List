@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const fetch = require('node-fetch');
 const apiKey = 'ec348de508f5456dbbde24cb3729bbb9';
-
+const gamesCtrl = require('../controllers/games');
 
 router.get('/', async (req, res, next) => {
   try {
@@ -12,6 +12,7 @@ router.get('/', async (req, res, next) => {
     const data = await response.json();
     const topGames = data.results
       .map(game => ({
+        id: game.id,
         name: game.name,
         coverImageUrl: game.background_image,
         rating: game.rating,
@@ -26,6 +27,10 @@ router.get('/', async (req, res, next) => {
     res.render('error', { message: 'Failed to fetch top games' });
   }
 });
+
+router.get('/:id', gamesCtrl.show);
+
+
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
