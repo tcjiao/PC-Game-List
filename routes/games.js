@@ -20,7 +20,6 @@ router.get('/', async (req, res, next) => {
 
     const shuffledGames = shuffleArray(topGames);
     const randomGames = shuffledGames.slice(0, 10);
-
     res.render('games/index', { title: 'Top Games', topGames: randomGames });
   } catch (error) {
     console.error(error);
