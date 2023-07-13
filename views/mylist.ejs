@@ -1,0 +1,18 @@
+<%- include('./partials/header') %>
+
+
+<h1>My List</h1>
+<% if (games && games.length > 0) { %>
+  <ul>
+    <% games.forEach((game) => { %>
+      <li><%= game.name %></li>
+      <form class="remove-from-list-form" action="/mylist/<%= game.id %>?_method=DELETE" method="POST">
+        <button type="submit" class="remove-from-list-button">Remove</button>
+      </form>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>No games in your list.</p>
+<% } %>
+
+<%- include('./partials/footer') %>
