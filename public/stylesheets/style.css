@@ -9,6 +9,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 50px;
+  margin-right: 20px;
 }
 
 a {
@@ -77,8 +78,8 @@ h3:hover {
 	border: 2px solid lightgrey;
 	background-color: #fff;
 	font-size: 30px;
-	height: 2.5em;
-	width: 2.5em;
+	height: 50px;
+	width: 50px;
 	border-radius: 999px;
 	position: relative;
 	transition: transform 0.3s ease;
@@ -277,3 +278,44 @@ h3 {
   transition: .3s;
 }
 
+.remove-from-list-button-big {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  border: 2px solid rgb(231, 50, 50);
+  background-color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 10px #333;
+  overflow: hidden;
+  transition: .3s;
+}
+.remove-from-list-button-big:hover {
+  background-color: rgb(245, 207, 207);
+  transform: scale(1.2);
+  box-shadow: 0 0 4px #111;
+  transition: .3s;
+}
+
+.rating-stars {
+  display: inline-block;
+  font-size: 18px;
+  color: #f1c40f;
+}
+
+.rating-stars .fas {
+  position: relative;
+  display: inline-block;
+}
+
+.rating-stars .fas.fa-star-half-alt:before {
+  content: "\f089";
+  position: absolute;
+  width: 50%;
+  overflow: hidden;
+  color: #f1c40f;
+}
+
+.rating-stars .far {
+  color: #ccc;
+}

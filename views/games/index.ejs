@@ -15,7 +15,18 @@
       <a href="/games/<%= game.id %>">
       <h3><%= game.name %></h3>
     </a>
-    <div class="rating"><p>Rating: <%= game.rating %></p>
+    <div class="rating">
+      <div class="rating-stars">
+      <% for (let i = 1; i <= 5; i++) { %>
+        <% if (game.rating >= i) { %>
+          <i class="fas fa-star"></i>
+        <% } else if (game.rating >= i - 0.5) { %>
+          <i class="fas fa-star-half-alt"></i>
+        <% } else { %>
+          <i class="far fa-star"></i>
+        <% } %>
+      <% } %>
+      </div>
     <% if (user) { %>
       <form method="POST" action="/mylist" class="add-to-list-form">
         <input type="hidden" name="gameId" value="<%= game.id %>">

@@ -50,14 +50,14 @@ async function show(req, res, next) {
 
   async function update(req, res) {
     const gameId = req.params.id;
-     const isPurchased = !!req.body.purchased;
-     console.log("ispurchased: ", isPurchased)
-     try {
-        await Mylist.updateOne({ gameId: gameId, user: req.user._id }, { purchased: isPurchased });
-        res.sendStatus(200);
-      } catch (error) {
-        console.error('Error updating game purchased status:', error);
-        res.sendStatus(500);
-      }
-
+    const isPurchased = !!req.body.purchased;
+    console.log("ispurchased: ", isPurchased);
+    
+    try {
+      await Mylist.updateOne({ gameId: gameId, user: req.user._id }, { purchased: isPurchased });
+      return res.redirect(`/games/${gameId}`);
+    } catch (error) {
+      console.error('Error updating game purchased status:', error);
+      res.sendStatus(500);
+    }
   }
