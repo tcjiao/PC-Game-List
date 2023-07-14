@@ -153,10 +153,7 @@ nav > a.active {
   margin-bottom: -15px;
 }
 
-.game-image {
-  width: 100%;
-  height: auto;
-}
+
 
 h3 {
   white-space: nowrap;
@@ -212,3 +209,7 @@ h3 {
   text-align: left;
 }
 
+.game-image {
+  width: 100%;
+  height: auto;
+}

@@ -4,19 +4,17 @@
 <h1 class="page-title">Game Details</h1>
 </div>
 
-<% if (user) { %>
-
-    <form method="POST" action="/mylist" class="add-to-list-form">
-      <input type="hidden" name="gameId" value="<%= game.id %>">
-      <button type="submit" class="add-to-list-button">+</button>
-    </form>
-    <% } %>
-
-    <% } %>
+   
 
 <div class="details-container">
     <div class="game-details">
       <h1><%= game.name %></h1>
+      <% if (user) { %>
+        <form method="POST" action="/mylist" class="add-to-list-form">
+          <input type="hidden" name="gameId" value="<%= game.id %>">
+          <button type="submit" class="add-to-list-button"></button>
+        </form>
+        <% } %>
       <img src="<%= game.background_image %>" alt="<%= game.name %>" class="game-image-details">
     </div>
     <h3>Game Description: </h3>
