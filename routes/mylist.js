@@ -50,19 +50,20 @@ router.get('/mylist', async (req, res) => {
     try {
         const mylist = new Mylist({ 
             gameId: gameId, 
-            user: userId});
+            user: userId,
+            purchased: false,
+        });
         await mylist.save();
       } catch (error) {
         console.log('Error storing game ID:', error);
       }
-    
+      res.redirect('back');
   });
 
 
 
   router.delete('/mylist/:id', async (req, res) => {
     const mylistId = req.params.id;
-    console.log(mylistId);
 
     try {
       const mylist = await Mylist.findOneAndDelete({ gameId: mylistId });
@@ -73,10 +74,10 @@ router.get('/mylist', async (req, res) => {
         console.error('User Mylist document not found');
       }
   
-      res.redirect('/mylist');
+      res.redirect('/back');
     } catch (error) {
       console.error('Error removing game from Mylist collection:', error);
-      res.redirect('/mylist');
+      res.redirect('back');
     }
   });
 

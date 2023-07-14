@@ -28,6 +28,7 @@ router.get('/', async (req, res, next) => {
     res.render('error', { message: 'Failed to fetch top games' });
   }
 });
+router.put('/:id/purchase', gamesCtrl.update);
 
 router.get('/:id', gamesCtrl.show);
 

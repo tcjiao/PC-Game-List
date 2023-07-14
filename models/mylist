@@ -10,6 +10,10 @@ const mylistSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
+    purchased: {
+        type: Boolean,
+      },
+    
   }, {
     timestamps: true
   });

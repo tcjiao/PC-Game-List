@@ -108,8 +108,8 @@ h3:hover {
 	&:hover {
 		transform: scale(1.2);
     cursor: pointer;
-    border-color: green;
-    color: green;
+    border-color: rgb(2, 240, 50);
+    background-color: rgb(2, 240, 50);
 	}
 }
 
