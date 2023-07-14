@@ -10,8 +10,8 @@
 <body>
   <nav>
     <a href="/" class="home-link" <%= title === 'Home Page' ? 'active' : '' %>">HOME</a>
+    <a href="/games" <%= title === 'GAMES' ? 'class="active"' : '' %>>GAMES</a>
     <% if (user) { %>
-        <a href="" <%= title === 'NEWS' ? 'class="active"' : '' %>>NEWS</a>
         <a href="/mylist" <%= title === 'MY LIST' ? 'class="active"' : '' %>>MY LIST</a>
         <a href="/logout">LOG OUT</a>
     <% } else { %>

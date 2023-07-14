@@ -2,13 +2,20 @@
 
 
 <h1>My List</h1>
+
 <% if (games && games.length > 0) { %>
-  <ul>
+  <ul class="game-list">
     <% games.forEach((game) => { %>
-      <li><%= game.name %></li>
-      <form class="remove-from-list-form" action="/mylist/<%= game.id %>?_method=DELETE" method="POST">
-        <button type="submit" class="remove-from-list-button">Remove</button>
-      </form>
+      <li>
+        <a href="/games/<%= game.id %>">
+          <h3><%= game.name %></h3>
+          <div class="rating"><p>Rating: <%= game.rating %></p></div>
+          <img src="<%= game.coverImageUrl %>" alt="<%= game.name %>" class="game-image">
+        </a>
+        <form class="remove-from-list-form" action="/mylist/<%= game.id %>?_method=DELETE" method="POST">
+          <button type="submit" class="remove-from-list-button">Remove</button>
+        </form>
+      </li>
     <% }) %>
   </ul>
 <% } else { %>

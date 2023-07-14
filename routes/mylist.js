@@ -6,7 +6,6 @@ const fetch = require('node-fetch');
 const apiKey = 'ec348de508f5456dbbde24cb3729bbb9';
 
 
-
 router.get('/mylist', async (req, res) => {
     try {
       const userId = req.user.id; 
@@ -19,7 +18,13 @@ router.get('/mylist', async (req, res) => {
             const response = await fetch(`https://api.rawg.io/api/games/${gameId}?key=${apiKey}`);
             if (response.ok) {
               const gameData = await response.json();
-              return gameData;
+              const game = {
+                id: gameData.id,
+                name: gameData.name,
+                rating: gameData.rating,
+                coverImageUrl: gameData.background_image,
+              };
+              return game;
             } else {
               console.error(`Error fetching game with ID: ${gameId}`);
               return null;
@@ -51,7 +56,6 @@ router.get('/mylist', async (req, res) => {
         console.log('Error storing game ID:', error);
       }
     
-    res.redirect('/games');
   });
 
 

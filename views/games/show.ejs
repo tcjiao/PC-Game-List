@@ -5,10 +5,13 @@
 </div>
 
 <% if (user) { %>
+
     <form method="POST" action="/mylist" class="add-to-list-form">
       <input type="hidden" name="gameId" value="<%= game.id %>">
       <button type="submit" class="add-to-list-button">+</button>
     </form>
+    <% } %>
+
     <% } %>
 
 <div class="details-container">

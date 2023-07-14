@@ -19,6 +19,7 @@ router.get('/', async (req, res, next) => {
       }))
       .filter(game => game.coverImageUrl !== null);
 
+  
     const shuffledGames = shuffleArray(topGames);
     const randomGames = shuffledGames.slice(0, 10);
     res.render('games/index', { title: 'Top Games', topGames: randomGames });
