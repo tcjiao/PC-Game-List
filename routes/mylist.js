@@ -57,7 +57,6 @@ router.get('/mylist', async (req, res) => {
       } catch (error) {
         console.log('Error storing game ID:', error);
       }
-      res.redirect('back');
   });
 
 
@@ -74,10 +73,10 @@ router.get('/mylist', async (req, res) => {
         console.error('User Mylist document not found');
       }
   
-      res.redirect('/back');
+      res.redirect('/mylist');
     } catch (error) {
       console.error('Error removing game from Mylist collection:', error);
-      res.redirect('back');
+      res.redirect('/mylist');
     }
   });
 

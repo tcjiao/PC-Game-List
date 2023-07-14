@@ -2,6 +2,8 @@
 
 <div class="header">
 <h1 class="page-title">Game Details</h1>
+</div>
+
 <% if (user) { %>   
     <% if (!isList) { %>
   <form method="POST" action="/mylist" class="add-to-list-form">
@@ -28,7 +30,6 @@
     <button type="submit">Submit</button>
   </form>
   <% } %>
-</div>
    
 
 <div class="details-container">

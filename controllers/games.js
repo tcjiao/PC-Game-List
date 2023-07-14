@@ -18,14 +18,18 @@ async function index(req, res) {
   }
 
 
-async function show (req, res, next) {
+async function show(req, res, next) {
     try {
       const gameId = req.params.id;
       const gameDetails = await getGameDetails(gameId);
-      const isPurchased = await Mylist.exists({ gameId: gameId, user: req.user._id, purchased: true });
-      const isList = await Mylist.exists({gameId: gameId})
-
-          
+      let isPurchased = false;
+      let isList = false;
+  
+      if (req.user) {
+        isPurchased = await Mylist.exists({ gameId: gameId, user: req.user._id, purchased: true });
+        isList = await Mylist.exists({ gameId: gameId });
+      }
+  
       res.render('games/show', { game: gameDetails, title: 'Game Details', isPurchased: isPurchased, isList: isList });
     } catch (error) {
       console.error('Error fetching game details:', error);
