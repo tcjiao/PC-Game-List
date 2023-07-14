@@ -1,25 +1,28 @@
 <%- include('./partials/header') %>
 
-
-<h1>My List</h1>
+<div class="header">
+<h1 class="page-title">My List</h1>
+</div>
 
 <% if (games && games.length > 0) { %>
-  <ul class="game-list">
+      <div class="game-list">
     <% games.forEach((game) => { %>
-      <li>
-        <a href="/games/<%= game.id %>">
-          <h3><%= game.name %></h3>
-          <div class="rating"><p>Rating: <%= game.rating %></p></div>
-          <img src="<%= game.coverImageUrl %>" alt="<%= game.name %>" class="game-image">
-        </a>
+        <div class="game">
+            <a href="/games/<%= game.id %>" class="game-link">
+            <h3 class="game-name"><%= game.name %></h3>
+            </a>
+            <div class="game-rating">Rating: <%= game.rating %></div>
+            <a href="/games/<%= game.id %>" class="game-link">
+              <img src="<%= game.coverImageUrl %>" alt="<%= game.name %>" class="game-image">
+            </a>
         <form class="remove-from-list-form" action="/mylist/<%= game.id %>?_method=DELETE" method="POST">
           <button type="submit" class="remove-from-list-button">Remove</button>
         </form>
-      </li>
-    <% }) %>
-  </ul>
+        </div>
+   <% }) %>
 <% } else { %>
   <p>No games in your list.</p>
 <% } %>
+</div>
 
 <%- include('./partials/footer') %>

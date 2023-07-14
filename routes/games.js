@@ -7,7 +7,7 @@ const gamesCtrl = require('../controllers/games');
 router.get('/', async (req, res, next) => {
   try {
     const response = await fetch(
-      `https://api.rawg.io/api/games?key=${apiKey}&ordering=-rating&page_size=50&platforms=4&dates=2023-01-01,2023-12-31`
+      `https://api.rawg.io/api/games?key=${apiKey}&ordering=-rating&page_size=100&platforms=4&dates=2023-01-01,2023-12-31`
     );
     const data = await response.json();
     const topGames = data.results
@@ -21,7 +21,7 @@ router.get('/', async (req, res, next) => {
 
   
     const shuffledGames = shuffleArray(topGames);
-    const randomGames = shuffledGames.slice(0, 10);
+    const randomGames = shuffledGames.slice(0, 40);
     res.render('games/index', { title: 'Top Games', topGames: randomGames });
   } catch (error) {
     console.error(error);

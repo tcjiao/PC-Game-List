@@ -11,18 +11,23 @@
 <div class="game-list">
   <% topGames.forEach((game, index) => { %>
     <div class="game">
+    <div class="game-info">
       <a href="/games/<%= game.id %>">
       <h3><%= game.name %></h3>
-      <div class="rating"><p>Rating: <%= game.rating %></p></div>
-      <img src="<%= game.coverImageUrl %>" alt="<%= game.name %>" class="game-image">
-      </a>
-
-      <% if (user) { %>
+    </a>
+    <div class="rating"><p>Rating: <%= game.rating %></p>
+    <% if (user) { %>
       <form method="POST" action="/mylist" class="add-to-list-form">
         <input type="hidden" name="gameId" value="<%= game.id %>">
         <button type="submit" class="add-to-list-button">+</button>
       </form>
       <% } %>
+    </div>
+  </div>
+
+      <a href="/games/<%= game.id %>">
+      <img src="<%= game.coverImageUrl %>" alt="<%= game.name %>" class="game-image">
+        </a>
 
     </div>
     <% if ((index + 1) % 5 === 0) { %>
