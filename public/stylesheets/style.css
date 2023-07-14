@@ -68,6 +68,8 @@ h3:hover {
 	&:hover {
 		transform: scale(1.2);
     cursor: pointer;
+    border-color: rgb(2, 240, 50);
+    background-color: rgb(2, 240, 50);
 	}
 }
 
@@ -106,6 +108,8 @@ h3:hover {
 	&:hover {
 		transform: scale(1.2);
     cursor: pointer;
+    border-color: green;
+    color: green;
 	}
 }
 
@@ -189,6 +193,8 @@ nav > a.active {
   border-radius: 5px;
   border-bottom: none;
   margin-bottom: -15px;
+  padding: 0px 10px 20px 10px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 
 
@@ -251,3 +257,23 @@ h3 {
   width: 100%;
   height: auto;
 }
+
+.remove-from-list-button {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 25px;
+  border: 2px solid rgb(231, 50, 50);
+  background-color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 10px #333;
+  overflow: hidden;
+  transition: .3s;
+}
+.remove-from-list-button:hover {
+  background-color: rgb(245, 207, 207);
+  transform: scale(1.2);
+  box-shadow: 0 0 4px #111;
+  transition: .3s;
+}
+
