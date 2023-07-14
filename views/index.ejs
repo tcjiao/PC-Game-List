@@ -1,7 +1,31 @@
-<%- include('./partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="/stylesheets/home.css">
+  <title><%= title %></title>
+</head>
+<body> 
+  <nav>
+    <a href="/" class="home-link" <%= title === 'Home Page' ? 'active' : '' %>">HOME</a>
+    <a href="/games" <%= title === 'GAMES' ? 'class="active"' : '' %>>GAMES</a>
+    <% if (user) { %>
+        <a href="/mylist" <%= title === 'MY LIST' ? 'class="active"' : '' %>>MY LIST</a>
+        <a href="/logout">LOG OUT</a>
+    <% } else { %>
+      <a href="/auth/google" class="login"><img src="https://i.imgur.com/FHjYyi0.png"></a>
+    <% } %>
+  </nav>
 
-<h1>Home</h1>
-<a href="/games"><h1>Getting Started</h1></a>
+  <main>
+<div class="container">
+  <a href="/games"><h1 class="start">Getting Started</h1></a>
+</div>
+<script src="/js/random-background.js"></script>
+
 
 
 <%- include('./partials/footer') %>
