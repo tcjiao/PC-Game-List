@@ -298,25 +298,6 @@ h3 {
   transition: .3s;
 }
 
-.rating-stars {
-  display: inline-block;
-  font-size: 18px;
-  color: #f1c40f;
-}
-
-.rating-stars .fas {
-  position: relative;
-  display: inline-block;
-}
-
-.rating-stars .fas.fa-star-half-alt:before {
-  content: "\f089";
-  position: absolute;
-  width: 50%;
-  overflow: hidden;
-  color: #f1c40f;
-}
-
-.rating-stars .far {
-  color: #ccc;
+.checked {
+  color: orange;
 }

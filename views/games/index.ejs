@@ -3,10 +3,18 @@
 
 <div class="header">
   <h1 class="page-title">The Most Popular Games in 2023</h1>
-  <form action="/games" method="get">
-    <button type="submit" class="refresh-button">🔄</button>
+  <form id="refreshForm" action="/games" method="get">
+    <button type="button" onclick="submitForm()">
+      <i class="fa fa-refresh fa-spin" style="font-size: 30px"></i>
+    </button>
   </form>
 </div>
+
+<script>
+  function submitForm() {
+    document.getElementById("refreshForm").submit();
+  }
+</script>
 
 <div class="game-list">
   <% topGames.forEach((game, index) => { %>
@@ -19,11 +27,11 @@
       <div class="rating-stars">
       <% for (let i = 1; i <= 5; i++) { %>
         <% if (game.rating >= i) { %>
-          <i class="fas fa-star"></i>
+          <i class="fa fa-star checked"></i>
         <% } else if (game.rating >= i - 0.5) { %>
-          <i class="fas fa-star-half-alt"></i>
+          <i class="fas fa-star-half-alt checked"></i>
         <% } else { %>
-          <i class="far fa-star"></i>
+          <i class="fa fa-star"></i>
         <% } %>
       <% } %>
       </div>
