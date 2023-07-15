@@ -49,13 +49,11 @@ async function show(req, res, next) {
     try {
       const gameId = req.params.id;
       const gameDetails = await getGameDetails(gameId);
-      const previewVideos = await getGamePreviewVideos(gameId);
       let isPurchased = false;
       let isList = false;
-      console.log("gameid: ", gameId);
-        console.log("preview: ", previewVideos);
+      console.log("ispurchased: ", isPurchased);
       if (req.user) {
-        isPurchased = await Mylist.exists({ gameId: gameId, previewVideos: previewVideos, user: req.user._id, purchased: true });
+        isPurchased = await Mylist.exists({ gameId: gameId, user: req.user._id, purchased: true });
         isList = await Mylist.exists({ gameId: gameId });
       }
   
@@ -73,16 +71,6 @@ async function show(req, res, next) {
       return data;
     } catch (error) {
       throw new Error('Failed to fetch game details');
-    }
-  }
-
-  async function getGamePreviewVideos(id) {
-    try {
-      const response = await fetch(`https://api.rawg.io/api/games/${id}/movies?key=${apiKey}`);
-      const data = await response.json();
-      return data.results;
-    } catch (error) {
-      throw new Error('Failed to fetch game preview videos');
     }
   }
 

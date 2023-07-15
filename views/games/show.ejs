@@ -23,15 +23,15 @@
 
             <form action="/games/<%= game.id %>/purchase?_method=PUT" method="POST">
                 <% if (isPurchased) { %>
-                    <input type="checkbox" name="purchased" id="purchased" checked>
-                  <label for="purchased">
-                    Owned this game
-                  </label>
+                  <input type="checkbox" name="purchased" id="purchased" checked>
+                   <label for="purchased">
+                     <div id="tick_mark"></div>
+                   </label>
                 <% } else { %>
                     <input type="checkbox" name="purchased" id="purchased">
-                  <label for="purchased">
-                    Not owned this game yet
-                  </label>
+                    <label for="purchased">
+                      <div id="tick_mark"></div>
+                    </label>
                 <% } %>
               </form>
           <% } %>
@@ -53,5 +53,8 @@
     <h1>Game Description: </h1>
     <p class="game-description"><%- game.description %></p>
   </div>
+
+
+
 
 <%- include('../partials/footer') %>
