@@ -12,7 +12,18 @@
             <a href="/games/<%= game.id %>" class="game-link">
             <h3 class="game-name"><%= game.name %></h3>
             </a>
-            <div class="rating">Rating: <%= game.rating %>
+            <div class="rating">
+                <div class="rating-stars">
+                    <% for (let i = 1; i <= 5; i++) { %>
+                      <% if (game.rating >= i) { %>
+                        <i class="fas fa-star"></i>
+                      <% } else if (game.rating >= i - 0.5) { %>
+                        <i class="fas fa-star-half-alt"></i>
+                      <% } else { %>
+                        <i class="far fa-star"></i>
+                      <% } %>
+                    <% } %>
+                    </div>
             <form class="remove-from-list-form" action="/mylist/<%= game.id %>?_method=DELETE" method="POST">
               <button type="submit" class="remove-from-list-button">
                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
