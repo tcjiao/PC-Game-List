@@ -1,11 +1,6 @@
 var express = require('express');
 const passport = require('passport');
 var router = express.Router();
-const fetch = require('node-fetch');
-const { listen } = require('../server');
-const apiKey = 'ec348de508f5456dbbde24cb3729bbb9';
-let gamesList = [];
-const Mylist = require('../models/mylist');
 
 
 router.get('/', function(req, res, next) {
@@ -33,15 +28,6 @@ router.get('/logout', function(req, res){
   });
 });
 
-router.post('/mylist/add', async (req, res, next) => {
-  try {
-    const { gameId } = req.body;
-    res.redirect('/mylist');
-  } catch (error) {
-    console.error(error);
-    res.render('error', { message: 'Failed to add game to list' });
-  }
-});
 
 
 
