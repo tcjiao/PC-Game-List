@@ -1,11 +1,9 @@
 <%- include('../partials/header') %>
 
-<div class="header">
-    <div class="header">
-<h1 class="page-title">Game Details</h1>
-</div>
-<% if (user) { %>   
 
+<% if (user) { %>   
+    <div class="header">
+        <h1 class="page-title">Game Details</h1>
     <% if (!isList) { %>
         <div class="checkbox-container">
         <form method="POST" action="/mylist" class="add-to-list-form">
@@ -38,7 +36,6 @@
                 <% } %>
               </form>
           <% } %>
-          <% } %>
 
           <script>
             const checkbox = document.getElementById('purchased');
@@ -46,7 +43,12 @@
               this.form.submit();
             });
           </script>
+     <% } else { %>
 
+<div class="header">
+    <h1 class="page-title">Game Details</h1>
+    </div>
+    <% } %>
 
 <div class="details-container">
     <div class="game-details">
