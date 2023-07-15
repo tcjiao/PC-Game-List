@@ -1,9 +1,9 @@
 <%- include('../partials/header') %>
 
 <div class="header">
+    <div class="header">
 <h1 class="page-title">Game Details</h1>
 </div>
-
 <% if (user) { %>   
 
     <% if (!isList) { %>
@@ -20,6 +20,7 @@
                     </svg>
                 </button>
             </form>
+        </div>
 
             <form action="/games/<%= game.id %>/purchase?_method=PUT" method="POST">
                 <% if (isPurchased) { %>
@@ -27,11 +28,13 @@
                    <label for="purchased">
                      <div id="tick_mark"></div>
                    </label>
+                   <p class="owned">Owned the Game</p>
                 <% } else { %>
                     <input type="checkbox" name="purchased" id="purchased">
                     <label for="purchased">
                       <div id="tick_mark"></div>
                     </label>
+                    <p class="owned">Not Owned the Game</p>
                 <% } %>
               </form>
           <% } %>
