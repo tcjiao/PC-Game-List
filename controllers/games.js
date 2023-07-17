@@ -11,30 +11,42 @@ module.exports = {
     shuffleArray,
 }
 
+
 async function index(req, res, next) {
     try {
-        const response = await fetch(
-          `https://api.rawg.io/api/games?key=${apiKey}&ordering=-rating&page_size=100&platforms=4&dates=2023-01-01,2023-12-31`
-        );
-        const data = await response.json();
-        const topGames = data.results
-          .map(game => ({
-            id: game.id,
-            name: game.name,
-            coverImageUrl: game.background_image,
-            rating: game.rating,
-          }))
-          .filter(game => game.coverImageUrl !== null);
-    
-      
-        const shuffledGames = shuffleArray(topGames);
-        const randomGames = shuffledGames.slice(0, 40);
-        res.render('games/index', { title: 'Top Games', topGames: randomGames });
-      } catch (error) {
-        console.error(error);
-        res.render('error', { message: 'Failed to fetch top games' });
+      const response = await fetch(
+        `https://api.rawg.io/api/games?key=${apiKey}&ordering=-rating&page_size=100&platforms=4&dates=2023-01-01,2023-12-31`
+      );
+      const data = await response.json();
+      const allGames = data.results
+        .map(game => ({
+          id: game.id,
+          name: game.name,
+          coverImageUrl: game.background_image,
+          rating: game.rating,
+        }))
+        .filter(game => game.coverImageUrl !== null);
+  
+      let topGames = [];
+  
+      if (req.user) {
+        const user = req.user._id;
+  
+        const userGameIds = await Mylist.find({ user }).distinct('gameId');
+  
+        topGames = allGames.filter(game => !userGameIds.includes(game.id));
+      } else {
+        topGames = allGames;
       }
-}
+  
+      const shuffledGames = shuffleArray(topGames);
+      const randomGames = shuffledGames.slice(0, 40);
+      res.render('games/index', { title: 'Top Games', topGames: randomGames });
+    } catch (error) {
+      console.error(error);
+      res.render('error', { message: 'Failed to fetch top games' });
+    }
+  }
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
