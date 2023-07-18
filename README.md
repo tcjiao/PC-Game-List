@@ -35,3 +35,4 @@ This Application is to view popular pc games in 2023 and add games to your colle
 - [ ] Add review comment under the game description.
 - [ ] Add friend list and community system.
 - [ ] Add search function so user can find the specific game.
+- [ ] Can change display which year's popular game.
